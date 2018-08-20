@@ -23,7 +23,7 @@ import javax.annotation.Resource;
  * @author qianchun 2018/8/13
  **/
 @Component
-//@RabbitListener(queues = RabbitMqConfig.QUEUE_USER, containerFactory = "rabbitListenerContainerFactory")
+@RabbitListener(queues = RabbitMqConfig.QUEUE_USER, containerFactory = "rabbitListenerContainerFactory")
 public class Consumer {
 
     @Autowired
@@ -51,7 +51,4 @@ public class Consumer {
         });
         return container;
     }
-
-
-
 }

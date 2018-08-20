@@ -50,7 +50,7 @@ public class RabbitMqConfig {
         connectionFactory.setUsername(rabbitProperties.getUsername());
         connectionFactory.setPassword(rabbitProperties.getPassword());
         connectionFactory.setVirtualHost(rabbitProperties.getVirtualHost());
-        connectionFactory.setPublisherConfirms(true);//设置事件回调
+//        connectionFactory.setPublisherConfirms(true);//设置事件回调
         return connectionFactory;
     }
 

@@ -2,6 +2,8 @@ package com.wind.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import com.wind.rabbitmq.queue.RabbitMqConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.Queue;
@@ -25,6 +27,7 @@ import javax.annotation.Resource;
 @Component
 @RabbitListener(queues = RabbitMqConfig.QUEUE_USER, containerFactory = "rabbitListenerContainerFactory")
 public class Consumer {
+    private static Logger logger = LoggerFactory.getLogger(Consumer.class);
 
     @Autowired
     private ConnectionFactory connectionFactory;
@@ -45,7 +48,7 @@ public class Consumer {
             @Override
             public void onMessage(Message message, Channel channel) throws Exception {
                 byte[] body = message.getBody();
-                System.out.println("receive msg : " + new String(body));
+                logger.info("receive msg : " + new String(body));
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false); //确认消息成功消费
             }
         });

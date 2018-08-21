@@ -1,5 +1,6 @@
 server:
-  port: 8099
+  port: 8080
+  context-path: "/rabbitmq"
 
 spring:
   application:
